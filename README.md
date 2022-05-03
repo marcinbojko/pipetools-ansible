@@ -33,6 +33,15 @@ Pipetools-Ansible - alpine based pipeline helper for CI/CD, with ansible
 * ansible
 * ansible-lint
 
+## Ansible collections
+
+* ansible.posix
+* community.general
+* community.crypto
+* community.windows
+* ansible.windows
+* chocolatey.chocolatey
+
 ## Gitlab pipeline example
 
 ```yaml
