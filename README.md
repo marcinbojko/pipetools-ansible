@@ -36,11 +36,19 @@ Pipetools-Ansible - alpine based pipeline helper for CI/CD, with ansible
 ## Ansible collections
 
 * ansible.posix
-* community.general
-* community.crypto
-* community.windows
 * ansible.windows
 * chocolatey.chocolatey
+* community.aws
+* community.azure
+* community.crypto
+* community.dns
+* community.docker
+* community.general
+* community.google
+* community.hashi_vault
+* community.kubernetes
+* community.network
+* community.windows
 
 ## Gitlab pipeline example
 
