@@ -1,5 +1,5 @@
 FROM alpine:3.15.4 AS build
-LABEL version="v0.0.3"
+LABEL version="v0.0.4"
 LABEL release="pipetools-ansible"
 LABEL maintainer="marcinbojko"
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
@@ -16,6 +16,5 @@ RUN pip3 install --no-cache-dir --upgrade pip \
   && eval "$(ssh-agent -s)" \
   && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config \
   && chmod -R 700 ~/.ssh
-RUN ansible-galaxy install -r /tmp/requirements.yml
+RUN ansible-galaxy install -r /tmp/requirements.yml -p /usr/share/ansible/collections
 CMD ["busybox"]
-
