@@ -1,5 +1,5 @@
 FROM alpine:3.15.4 AS build
-LABEL version="v0.0.4"
+LABEL version="v0.0.5"
 LABEL release="pipetools-ansible"
 LABEL maintainer="marcinbojko"
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
@@ -11,6 +11,7 @@ RUN apk update && apk add --no-cache --update -t deps ca-certificates curl bash 
 # separate runs to check space consumption
 RUN pip3 install --no-cache-dir --upgrade pip \
   && pip3 install --no-cache-dir --upgrade wheel yamllint jsonlint dos2unix ansible ansible-lint \
+  && ansible-lint --version \
   && rm -rf /root/.cache ||true \
   && mkdir -p ~/.ssh \
   && eval "$(ssh-agent -s)" \
