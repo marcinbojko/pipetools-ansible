@@ -1,5 +1,5 @@
-FROM alpine:3.16.0 AS build
-LABEL version="v0.0.7"
+FROM alpine:3.16.2 AS build
+LABEL version="v0.0.8"
 LABEL release="pipetools-ansible"
 LABEL maintainer="marcinbojko"
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
