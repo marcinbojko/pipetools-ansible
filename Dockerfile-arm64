@@ -1,11 +1,11 @@
-FROM alpine:3.16.2 AS build
-LABEL version="v0.0.9"
+FROM arm64v8/alpine:3.16.2 AS build
+LABEL version="v0.0.9-arm"
 LABEL release="pipetools-ansible"
 LABEL maintainer="marcinbojko"
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 COPY requirements.yml /tmp/requirements.yml
 # shellcheck disable=SC2169
-RUN apk update && apk add --no-cache --update -t deps ca-certificates curl bash gettext tar gzip openssl openssh rsync python3 python3-dev py3-pip py3-wheel tzdata git httpie sshfs shellcheck \
+RUN apk update && apk add --no-cache --update -t deps ca-certificates curl bash gettext tar gzip openssl openssh rsync python3 python3-dev py3-pip py3-wheel tzdata git httpie sshfs \
   libffi libffi-dev py3-setuptools py3-distutils-extra build-base \
   && apk upgrade --no-cache
 # separate runs to check space consumption
