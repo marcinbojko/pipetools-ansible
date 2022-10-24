@@ -36,14 +36,14 @@ jobs:
           docker push "$maintainer/$release":"$version"
           docker tag  "$maintainer/$release":"$version" "$maintainer/$release:latest"
           docker push "$maintainer/$release:latest"
-      - name: Build and Push
+      - name: Build and Push arm64
         id: build_push_arm64
         run: |
           export release=$(grep -i "LABEL RELEASE" Dockerfile-arm64|awk '{print $2}'|cut -d\" -f2)
           export version=$(grep -i "LABEL VERSION" Dockerfile-arm64|awk '{print $2}'|cut -d\" -f2)
           export maintainer=$(grep -i "LABEL MAINTAINER" Dockerfile-arm64|awk '{print $2}'|cut -d\" -f2)
           export DOCKER_BUILDKIT=1
-          docker build --pull --no-cache -t  "$maintainer/$release":"$version" .
+          docker build --pull --no-cache --platform=linux/arm64/v8 -t "$maintainer/$release":"$version" -f Dockerfile-arm64 .
           docker push "$maintainer/$release":"$version"
          # docker tag  "$maintainer/$release":"$version" "$maintainer/$release:latest"
          # docker push "$maintainer/$release:latest"

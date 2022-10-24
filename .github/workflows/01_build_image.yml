@@ -40,4 +40,4 @@ jobs:
           export version=$(grep -i "LABEL VERSION" Dockerfile-arm64|awk '{print $2}'|cut -d\" -f2)
           export maintainer=$(grep -i "LABEL MAINTAINER" Dockerfile-arm64|awk '{print $2}'|cut -d\" -f2)
           export DOCKER_BUILDKIT=1
-          docker build --pull --no-cache -t  "$maintainer/$release":"$version" -f Dockerfile-arm64 .
+          docker build --pull --no-cache --platform=linux/arm64/v8 -t "$maintainer/$release":"$version" -f Dockerfile-arm64 .
