@@ -1,5 +1,5 @@
-FROM arm64v8/alpine:3.16.2 AS build
-LABEL version="v0.0.10-arm64"
+FROM arm64v8/alpine:3.17.0 AS build
+LABEL version="v0.0.12-arm64"
 LABEL release="pipetools-ansible"
 LABEL maintainer="marcinbojko"
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
