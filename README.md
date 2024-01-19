@@ -51,6 +51,7 @@ Pipetools-Ansible - multiplatform, alpine based pipeline helper for CI/CD, with 
 * community.kubernetes
 * community.network
 * community.windows
+* community.zabbix
 * kubernetes.core
 
 ## Gitlab pipeline example

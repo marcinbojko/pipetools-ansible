@@ -15,4 +15,5 @@ collections:
   - name: community.kubernetes
   - name: community.network
   - name: community.windows
+  - name: community.zabbix
   - name: kubernetes.core
