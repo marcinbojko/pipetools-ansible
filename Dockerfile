@@ -1,5 +1,5 @@
-FROM alpine:3.19.0 AS build
-LABEL version="v0.1.1"
+FROM alpine:3.19.1 AS build
+LABEL version="v0.1.2"
 LABEL release="pipetools-ansible"
 LABEL maintainer="marcinbojko"
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
@@ -18,6 +18,6 @@ RUN python3 -m venv /home/ansible;. /home/ansible/bin/activate \
   && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config \
   && chmod -R 700 ~/.ssh \
   && chmod 700 /entrypoint.sh && chmod +x /entrypoint.sh
-RUN . /home/ansible/bin/activate;ansible-galaxy collection install -r /tmp/requirements.yml -p /usr/share/ansible/collections
+RUN . /home/ansible/bin/activate;ansible-galaxy collection install -v --force -r /tmp/requirements.yml -p /usr/share/ansible/collections
 ENTRYPOINT ["/entrypoint.sh"]
 
