@@ -1,5 +1,5 @@
-FROM alpine:3.19.1 AS build
-LABEL version="v0.1.3"
+FROM alpine:3.19.2 AS build
+LABEL version="v0.1.4"
 LABEL release="pipetools-ansible"
 LABEL maintainer="marcinbojko"
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
@@ -11,7 +11,7 @@ libffi libffi-dev py3-setuptools py3-distutils-extra build-base yamllint dos2uni
 && apk upgrade --no-cache
 # separate runs to check space consumption
 RUN python3 -m venv /home/ansible;. /home/ansible/bin/activate \
-  && pip3 install --no-cache-dir --upgrade jsonlint\
+  && pip3 install --no-cache-dir --upgrade jsonlint \
   && rm -rf /root/.cache ||true \
   && mkdir -p ~/.ssh \
   && eval "$(ssh-agent -s)" \
