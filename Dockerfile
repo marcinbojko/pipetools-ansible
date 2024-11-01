@@ -1,5 +1,5 @@
-FROM alpine:3.19.2 AS build
-LABEL version="v0.1.5"
+FROM alpine:3.20.3 AS build
+LABEL version="v0.1.6"
 LABEL release="pipetools-ansible"
 LABEL maintainer="marcinbojko"
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
@@ -20,4 +20,3 @@ RUN python3 -m venv /home/ansible;. /home/ansible/bin/activate \
   && chmod 700 /entrypoint.sh && chmod +x /entrypoint.sh
 RUN . /home/ansible/bin/activate;ansible-galaxy collection install -v --force -r /tmp/requirements.yml -p /usr/share/ansible/collections
 ENTRYPOINT ["/entrypoint.sh"]
-

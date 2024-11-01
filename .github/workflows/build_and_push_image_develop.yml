@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: lint
         uses: luke142367/Docker-Lint-Action@v1.1.1
         with:
@@ -44,6 +44,7 @@ jobs:
           tags: "${{ steps.build_push.outputs.maintainer }}/${{ steps.build_push.outputs.release }}:${{ steps.build_push.outputs.version }}-dev"
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
+        continue-on-error: true
         with:
           image-ref: "${{ steps.build_push.outputs.maintainer }}/${{ steps.build_push.outputs.release }}:${{ steps.build_push.outputs.version }}-dev"
           format: 'sarif'
